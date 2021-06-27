@@ -1,8 +1,8 @@
 //------------EJERCICIO 1------------
 
-//Saber si una frase es palindromo o no
+// Know if a phrase is Palindrome or not
 function Palindrome(str) {
-  //Limpiar la cadena
+  //Clean the string
   let accents = ["á", "é", "í", "ó", "ú"];
   let string = str.toLowerCase().split("");
   let newString = "";
@@ -23,23 +23,23 @@ function Palindrome(str) {
       newString += string[i];
     }
   }
-  //Invertir la cadena
+  //To invert string
   let newStringReverse="";
-  //Conseguir el String en reversa
+  //Get the string in reverse
   for (let i = newString.length - 1; i >= 0; i--) {
       newStringReverse += newString[i];
   }
-  //Comparar las 2 cadenas la invertida y la normal
+  //Compare the two string, the invert and normal
   let isPalindrome = false;
   for (let j = 0; j < newString.length; j++) {
       if(newString[j]==newStringReverse[j]){
           isPalindrome = true;
       }else isPalindrome = false;
   }
-  console.log(isPalindrome);
+  return console.log(isPalindrome);
 }
 
-//Pruebas unitarias de la funcion palindromo
+// Unit test the Palindrome function in Spanish
 Palindrome("A mamá, Roma le aviva el amor a papá y a papá, Roma le aviva el amor a Mamá."); // == True
 Palindrome('Allí va Ramón y no maravilla.') // == True
 Palindrome('Adivina ya te opina, ya ni miles origina, ya ni cetro me domina, ya ni monarcas, a repaso ni mulato carreta, acaso nicotina, ya ni cita vecino, anima cocina, pedazo gallina, cedazo terso nos retoza de canilla goza, de pánico camina, ónice vaticina, ya ni tocino saca, a terracota luminosa pera, sacra nómina y ánimo de mortecina, ya ni giros elimina, ya ni poeta, ya ni vida') // == True
@@ -50,8 +50,8 @@ Palindrome('Este tampoco'); // == False
 
 // ------------EJERCICIO 2------------
 
-// En esta pequeña tarea, se le da una cadena de números separados por espacios
-// y debe devolver el número más alto y el más bajo.
+// In this small task, it is given a String the numbers separated for spaces
+// and should return the number more bigger and the more small
 
 function numbers(n){
     let numbers = n.split(' ');
@@ -74,7 +74,7 @@ function numbers(n){
             numeroMenor = arrayNumber[k];
         }
     }
-    console.log('Numero menor', numeroMenor,'Numero mayor',numeroMayor)
+    return console.log('Numero menor', numeroMenor,'Numero mayor',numeroMayor)
 
 }
 numbers('1 2 3 4 5') // == (1,5)
@@ -84,17 +84,17 @@ numbers('1 2 -3 4 5') // == (-3,5)
 
 // ------------EJERCICIO 3------------
 
-// Halle la sucesión de Fibonacci a partir de un número dado
+// Find the succession the Fibonacci from a number
 function fibonacci(n) {
-    //Hacer una arreglo con los 2 primero número de la secuencia
+    //Make a array with the two first numbers of the succession
     let array = [0,1];
-    //Recorrer el tamaño ingresado y empezar a sumar los números anteriores
+    //Cycle through the entered size and start a sum of the previous numbers.
     for (let j = 2; j < n; j++) {
         array[j]=(array[j-1]+array[j-2]);
     }
-    console.log(array)
+    return console.log(array)
 }
-//Pruebas unitarias de fibonacci
+//Unit test Fibonacci function
 fibonacci(5) // == [0, 1, 1, 2, 3]
 fibonacci(8) // == [0, 1, 1, 2, 3, 5, 8, 13]
 fibonacci(2) // == [0, 1]
@@ -102,17 +102,21 @@ fibonacci(4) // == [0, 1, 1, 2]
 
 // ------------EJERCICIO 4------------
 
-// Hay una guerra y nadie lo sabe: ¡la guerra del alfabeto!
-// Hay dos grupos de cartas hostiles. La tensión entre las letras del lado izquierdo y
-// las letras del lado derecho era demasiado alta y comenzó la guerra.
-// Escribe una función que acepte cadena de pelea que consta solo de letras minúsculas y devuelve quién gana la pelea.
-//  Cuando el lado izquierdo gana, regresa ¡El lado izquierdo gana !, cuando el lado derecho gana, regresa ¡El lado derecho gana!
+// There is a war and nobody knows - the alphabet war!
+// There are two groups of hostile letters. The tension between left side letters
+// and right side letters was too high and the war began.
+
+// Write a function that accepts fight string consists of only small letters and return
+//who wins the fight. When the left side wins return Left side wins!, when the right side
+//wins return Right side wins!, in other case return Let's fight again!.
+
 // The left side letters and their power:
 
 //  w - 4
 //  p - 3
 //  b - 2
 //  s - 1
+
 // The right side letters and their power:
 
 //  m - 4
@@ -120,14 +124,13 @@ fibonacci(4) // == [0, 1, 1, 2]
 //  d - 2
 //  z - 1
 
-// Funcion del ganador
 function winner(str){
-    //Marcador inicial de la batalla
+    //Scoreboard starting
     let right = 0;
     let left = 0;
-    //Convertir la cadena en array
+    //Convert the string in array
     let string = str.split('');
-    //Recorrer el array y ir sumando los puntos a cada lado
+    //Go through the array and add
     for (let i = 0; i < string.length; i++) {
         //Lado izquierdo
         if(string[i]=='w') left += 4;
@@ -140,33 +143,31 @@ function winner(str){
         if(string[i]=='d') right += 2;
         if(string[i]=='z') right += 1;
     }
-    //Dar el resultado final
+    //Final result
     if(left>right){
-        console.log('Gano izquierda con: ', left);
+        return console.log('Gano izquierda con: ', left);
     }else if(left==right){
-        console.log('Empate');
+        return console.log('Empate');
     }
     else{
-        console.log('Gano derecha con: ', right)
+        return console.log('Gano derecha con: ', right)
     }
 }
-// Pruebas Unitarias
-winner('z') // == Gana derecha con : 1
-winner('zdqmwpbs') // == Empate
-winner('zzzzs') // == Gano derecha con : 4
-winner('wwwwwwz') // == Gano izquierda con: 24;
+// Unit test
+winner('z') // == Win rigth with : 1
+winner('zdqmwpbs') // == Tie
+winner('zzzzs') // == Win right with : 4
+winner('wwwwwwz') // == Win rigth with : 24;
 
 // ------------EJERCICIO 5------------
 
-// En este kata se requiere que, dada una cadena, reemplace cada letra con su posición en el alfabeto.
-
-// Si algo en el texto no es una letra, ignórelo y no lo devuelva.
-
+// In this kata you are required to, given a string, replace every letter with its position in the alphabet.
+// If anything in the text isn't a letter, ignore it and don't return it.
 // "a" = 1, "b" = 2, etc.
 
 function kata(str) {
   let string = str.toLowerCase().split("");
-  let cadenaInicial = "";
+  let stringInitial = "";
   let objectLetterAndValue = [
     { letter: "a", value: "1" },
     { letter: "b", value: "2" },
@@ -199,102 +200,100 @@ function kata(str) {
   for (let i = 0; i < string.length; i++) {
     for (let j = 0; j < objectLetterAndValue.length; j++) {
       if (string[i] == objectLetterAndValue[j].letter) {
-        cadenaInicial += objectLetterAndValue[j].value +" ";
+        stringInitial += objectLetterAndValue[j].value +" ";
 
       }
     }
   }
-  let cadenaFinal = cadenaInicial.trim()
-  console.log(cadenaFinal);
+  let stringFinal = stringInitial.trim()
+  return console.log(stringFinal);
 }
-//Pruebas Unitarias
+// Unit test
 kata("The sunset sets at twelve o' clock."); //== 20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5 15 3 12 15 3 11
 kata("6w=cr kg"); // == 23 3 18 11 7
 kata("The narwhal bacons at midnight."); // == 20 8 5 14 1 18 23 8 1 12 2 1 3 15 14 19 1 20 13 9 4 14 9 7 8 20
 kata("c?0h+874"); // == 3 8
 
-// ------------EJERCICIO 5------------
-
-// Dada una matriz de números enteros, elimine el valor más pequeño.
-// No mute la matriz / lista original. Si hay varios elementos con el mismo valor,
-// elimine el que tenga un índice más bajo. Si obtiene una matriz / lista vacía,
-// devuelva una matriz / lista vacía.
-// No cambie el orden de los elementos que quedan.
-
-function deleteSmaller(arr) {
-    let smallNumber = 10000
-    let position = 0;
-    for (let i = 0; i < arr.length; i++) {
-        if(arr[i]<smallNumber){
-            smallNumber = arr[i];
-            position = i;
-        }
-    }
-    let newArray= [];
-    for(let j=0; j<arr.length;j++){
-        if(j!=position){
-            newArray.push(arr[j]);
-        }
-    }
-    console.log(newArray)
-}
-deleteSmaller([1,2,3,4,5]) // == [2, 3, 4, 5]
-deleteSmaller([5, 3, 2, 1, 4]) // == [5, 3, 2, 4]
-deleteSmaller([2, 2, 1, 2, 1]) // == [2, 2, 2, 1]
-deleteSmaller([0,1]) // == [1]
-deleteSmaller([]) // == []
-
 // ------------EJERCICIO 6------------
 
-// Complete el método / función para que convierta las palabras delimitadas por guiones /
-// subrayados en mayúsculas y minúsculas.
-// La primera palabra dentro de la salida debe escribirse en mayúscula solo
-// si la palabra original estaba en mayúscula (conocida como mayúsculas y minúsculas,
-// también conocida como mayúscula Pascal).
+// Given an array of integers, remove the smallest value. Do not mutate the original array/list.
+// If there are multiple elements with the same value, remove the one with a lower index.
+// If you get an empty array/list, return an empty array/list.
+// Don't change the order of the elements that are left.
+
+function deleteSmaller(arr) {
+  let smallNumber = 10000;
+  let position = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < smallNumber) {
+      smallNumber = arr[i];
+      position = i;
+    }
+  }
+  let newArray = [];
+  for (let j = 0; j < arr.length; j++) {
+    if (j != position) {
+      newArray.push(arr[j]);
+    }
+  }
+  return console.log(newArray);
+}
+// Unit test
+deleteSmaller([1, 2, 3, 4, 5]); // == [2, 3, 4, 5]
+deleteSmaller([5, 3, 2, 1, 4]); // == [5, 3, 2, 4]
+deleteSmaller([2, 2, 1, 2, 1]); // == [2, 2, 2, 1]
+deleteSmaller([0, 1]); // == [1]
+deleteSmaller([]); // == []
+
+// ------------EJERCICIO 7------------
+
+// Complet the method / function what for convert the word bounded for hyphen
+// underlline in upper case and lower case.
+// the firts word inside of output should wrinting in upper case only
+// if the firts original word was in upper case (known with upper case and lower case,
+// also known as upper case Pascal)
 
 function toCamelCase(str) {
     let string = str.split('');
-    //Detertar si hay raya al piso o guion
     let cad = "";
     for (let i = 0; i < string.length; i++) {
         if(string[i] == '_' || string[i] == '-'){
             string.splice(i,1);  //Quitar el guion o raya al piso
             string[i]=string[i].toUpperCase(); //Poner en mayuscula la siguiente letra
         }
-
     }
-    //Convertir el array en una adena
     for (let j = 0; j < string.length; j++) {
         cad+=string[j];
     }
-    console.log(cad)
+    return console.log(cad)
 }
-//Prueba unitarias
+//Unit test
 toCamelCase("the-stealth-warrior") // == theStealthWarrior
 toCamelCase("the_stealth_warrior") // == theStealthWarrior
 toCamelCase("el_juan_maravilla") // == elJuanMaravilla
 toCamelCase("El-juan-maravilla") // == ElJuanMaravilla
 
-// ------------EJERCICIO 7------------
-
-// Hacer multiplicaciones sin el signo de multiplicar
-
-function multiply(number1,number2){
-    let result = 0;
-    let signo = Math.sign(number2);
-    for (let i = 0; i < number1; i++) {
-        result = signo = 1 ? result+number2 : result-number2
-    }
-    console.log(result)
-}
-multiply(5,4) // == 20
-multiply(4,-4) // == -16
-multiply(5,0) // == 0
-multiply(10,5) // == 50
-
 // ------------EJERCICIO 8------------
 
-// Limpiar un arreglo de undefine,0,null,false sin modificar el arreglo principal
+// Doing multiplication without the multiplication sign
+
+function multiply(number1, number2) {
+  let result = 0;
+  let sign = Math.sign(number2);
+  for (let i = 0; i < number1; i++) {
+    result = sign = 1 ? result + number2 : result - number2;
+  }
+  return console.log(result);
+}
+//Unit test
+multiply(5, 4); // == 20
+multiply(4, -4); // == -16
+multiply(5, 0); // == 0
+multiply(10, 5); // == 50
+
+// ------------EJERCICIO 9------------
+
+// Clean a array the undefine, 0, null, false, without modify the principal array
 
 function clean(arr) {
     let newArray = []
@@ -303,21 +302,19 @@ function clean(arr) {
            newArray.push(arr[i]);
        }
     }
-    console.log('Array original: ',arr,'\n','Array limpio',newArray)
+    return console.log('Array original: ',arr,'\n','Array limpio',newArray)
 }
-
+// Unit test
 clean([1,2,false,undefined,3,'Hola',null]); // == [1, 2, 3, "Hola"]
 clean([1,2,3,4,5,null,null,null]); // == [1, 2, 3, 4, 5]
 clean([undefined,0,null,false]) // == []
 
-// ------------EJERCICIO 9------------
+// ------------EJERCICIO 10------------
 
-// Su objetivo en este kata es implementar una función de diferencia, que resta una lista de otra y devuelve el resultado.
-
-// Debería eliminar todos los valores de la lista a, que están presentes en la lista b.
-
+// The objective in this kata is implemente a difference function,
+// what remains a lista from another and return the result.
 // arrayDiff ([1,2], [1]) == [2]
-// Si un valor está presente en b, todas sus ocurrencias deben eliminarse del otro:
+// if a value this present in b, all his ocurrencis must be eliminated of the another
 
 // arrayDiff ([1,2,2,2,3], [2]) == [1,3]
 
@@ -330,25 +327,22 @@ function arrayDiff(arrA, arrB) {
         }
     }
   }
-  console.log(arrA);
-//   console.log(newArray);
+  return console.log(arrA);
 }
-
+// Unit test
 arrayDiff([1, 2, 3], [1,2]); // == [2]
 arrayDiff([-3,-1,-13,-15,14,3,2,15],[-1,14,-3]) // == [-13, -15, 3, 2, 15]
 arrayDiff ([1,2,2,2,3], [2]); // == [1,3]
 
-// ------------EJERCICIO 10------------
+// ------------EJERCICIO 11------------
 
-// Escriba una función en WeirdCase (raro en Ruby) que acepte una cadena y
-// devuelva la misma cadena con todos los caracteres indexados pares en cada
-// palabra en mayúsculas y todos los caracteres impares indexados en cada palabra en minúsculas.
-// La indexación que se acaba de explicar se basa en cero, por lo que el índice cero-ésimo es par,
-// por lo tanto, ese carácter debe ir en mayúsculas.
+// Write a function toWeirdCase (weirdcase in Ruby) that accepts a string,
+// and returns the same string with all even indexed characters in each word upper cased,
+// and all odd indexed characters in each word lower cased. The indexing just explained is zero based,
+// so the zero-ith index is even, therefore that character should be upper cased.
 
-// La cadena pasada solo constará de caracteres alfabéticos y espacios ('').
-// Los espacios solo estarán presentes si hay varias palabras.
-// Las palabras estarán separadas por un solo espacio ('')
+// The passed in string will only consist of alphabetical characters and spaces(' ').
+// Spaces will only be present if there are multiple words. Words will be separated by a single space(' ').
 
 function toWeirdCase(str) {
         let array = str.split(' ');
@@ -364,80 +358,74 @@ function toWeirdCase(str) {
             }
             cad+=" "
         }
-        console.log(cad.trim())
+        return console.log(cad.trim())
 
 }
+// Unit test
 toWeirdCase("String is a test") // == StRiNg Is A TeSt
 toWeirdCase("Looks like you passed") // == LoOkS LiKe YoU PaSsEd
 toWeirdCase("ThIs Is ThE FiNaL TeSt CaSe") // == ThIs Is ThE FiNaL TeSt CaSe
 toWeirdCase("Ok FiNe YoU ArE DoNe NoW") // == Ok FiNe YoU ArE DoNe NoW
 
-// ------------EJERCICIO 11------------
+// ------------EJERCICIO 12------------
 
-// Escribe una función que acepte una secuencia de números y calcule la varianza de la secuencia.
+// Write a function which will acept a sequence of numbers and calculate the variance for the sequenci.
+// The variance for a set of numbers is found by subtracting the mean from every value, adding them all up and
+// dividing by the number of elements
 
-// La varianza para un conjunto de números se encuentra restando la media de cada valor, elevando al cuadrado los resultados,
-// sumándolos todos y dividiendo por el número de elementos.
+// For example, in psudo code, to calculate the variance for [1, 2,2 ,3].
 
-// Por ejemplo, en pseudocódigo, para calcular la varianza de [1, 2, 2, 3].
-
-// media = (1 + 2 + 2 + 3) / 4
+// mean = (1 + 2 + 2 + 3) / 4
 // => 2
 
-// varianza = ((1 - 2) ^ 2 + (2 - 2) ^ 2 + (2-2) ^ 2 + (3 - 2) ^ 2) / 4
+// variance = ((1 - 2) ^ 2 + (2 - 2) ^ 2 + (2-2) ^ 2 + (3 - 2) ^ 2) / 4
 // => 0,5
 
 function variance (arr){
-    //Hallar la media del arreglo
+    //Find the mean for array
     let mean = 0;
     for (let i of arr) {
         mean+=i;
     }
     mean/=arr.length;
-    //Hallar la varianza del arreglo
+    //Find the variance for array
     let result = 0;
     for (let i = 0; i < arr.length; i++) {
         console.log()
         result+= (arr[i]-mean)**2;
     }
     result/=arr.length;
-    console.log('Media: ',mean,'\n','Varianza: ',result);
+    return console.log('Media: ',mean,'\n','Varianza: ',result);
 
 }
+// Unit test
 variance([1, 2, 2, 3]); // == 2 , 0.5
 variance([-10, 0, 10, 20, 30]); // == 10 , 200
 variance([8, 9, 10, 11, 12]); // == 10 , 2
 
-// ------------EJERCICIO 12------------
+// ------------EJERCICIO 13------------
 
-// Se le dará un número y deberá devolverlo como una cadena en forma expandida. Por ejemplo:
+// Will be given a number and shall return it as a string in expansive shape. For example:
 // 12 = '10 + 2'
 // 42 = '40 + 2'
 // 70304 = '70000 + 300 + 4'
 
 function expandedForm(n){
-    // Convertir el número en una cadena
     let numberString = n.toString();
-    // La cadena convertida en un array
     let numberArray = numberString.split('');
-    // Invertir la array
     numberArray.reverse();
     let string= "";
-    //Recorrer el array
     for (let i = 0; i < numberArray.length; i++) {
-        // Saltar si hay un 0
         if(numberArray[i]==0){
             continue;
         }else{
             string+= numberArray[i];
         }
-        // Agregar Ceros
         for (let j = i; j > 0 ; j--) {
             string+= "0";
         }
         string+=" ";
     }
-    //Agregar el formato correcto
     let newString = string.split(' ');
     let stringFinally = "";
     for (let i = newString.length-1; i >= 0; i--) {
@@ -447,34 +435,30 @@ function expandedForm(n){
             stringFinally+= newString[i];
         }
     }
-    console.log('Número: ',n,'\n Descompuesto: ',stringFinally)
+    return console.log('Número: ',n,'\n Descompuesto: ',stringFinally)
 }
 expandedForm(12); // 12 = '10 + 2'
 expandedForm(42); // 42 = '40 + 2'
 expandedForm(10); // 10 = '10'
 expandedForm(70304); // 70304 = '70000 + 300 + 4'
 
-// ------------EJERCICIO 12------------
+// ------------EJERCICIO 14------------
 
-//Algoritmo no tan optimo
+// The number is a Prime?
+// Not so optimal algorithm
 function theNumberIsAPrime(n) {
-  //Encontrar los divisores
   let dividers = 0;
-  //Inicializar la variable primo
   let prime;
-  //Recorre el número con los divisores posibles
   for (let i = 0; i <= n; i++) {
-    if (n > 1 && n!=4 && n % i == 0){ 
+    if (n > 1 && n!=4 && n % i == 0){
         dividers++;
     }
   }
-  //Si tiene 2 divisores es primo
   if (dividers == 2 && Math.sign(n)==1) prime = true;
-  //Sino, no 
   else prime = false;
-
-  console.log('¿Es primo? ',n,' : ',prime,'\n','Cantidad de divisores: ',dividers)
+  return console.log('¿Es primo? ',n,' : ',prime,'\n','Cantidad de divisores: ',dividers)
 }
+// Unit test
 theNumberIsAPrime(2); // == True
 theNumberIsAPrime(7); // == True
 theNumberIsAPrime(4); // == False
@@ -482,12 +466,12 @@ theNumberIsAPrime(1); // == False
 theNumberIsAPrime(11); // == True
 theNumberIsAPrime(89); // == True
 theNumberIsAPrime(80); // == False
-theNumberIsAPrime(-1); // == False 
+theNumberIsAPrime(-1); // == False
 theNumberIsAPrime(-5); // == False
 
-// ------------EJERCICIO 12------------2.0
+// ------------EJERCICIO 14------------2.0
 
-// Algoritmo más optimo
+// Optimal algorithm
 function theNumberIsAPrime(n) {
     let prime=true;
     let numero = Math.sqrt(n);
@@ -497,9 +481,9 @@ function theNumberIsAPrime(n) {
             prime = false;
         }
     }
-    console.log(prime)
+    return console.log(prime)
 }
-
+// Unit test
 theNumberIsAPrime(2); // == True
 theNumberIsAPrime(7); // == True
 theNumberIsAPrime(4); // == False
@@ -507,67 +491,56 @@ theNumberIsAPrime(1); // == False
 theNumberIsAPrime(11); // == True
 theNumberIsAPrime(89); // == True
 theNumberIsAPrime(80); // == False
-theNumberIsAPrime(-1); // == False 
+theNumberIsAPrime(-1); // == False
 theNumberIsAPrime(-5); // == False
 
-// ------------EJERCICIO 13------------
+// ------------EJERCICIO 15------------
 
-// Convertir cualquier número entero a binario
+// Convert any integer to binary
 
 function binary(n) {
-   //Guardar el número inicial
     let numberInitial = n;
     let string = "";
-    //Solo hacer el calculo en numeros positivos
     if(n>0){
-     //Hacer el proceso mientras el numero sea mayor o igual a 1
         while (numberInitial>=1) {
-     //En la cadena agregar el residuo y la misma cadena detras
             string = numberInitial%2 + string;
-     //Dividir el número y tomar el número entero
             numberInitial = Math.trunc(numberInitial/2);
         }
-        console.log('Numéro: ',n,'\n En binario: ',string);
+        return console.log('Numéro: ',n,'\n En binario: ',string);
     }else{
-        console.log('El número es negativo')
+        return console.log('El número es negativo')
     }
-    
 }
+// Unit test
 binary(5); // == 101
 binary(1); // == 1
 binary(-1); // == El número es negativo
 binary(1500); // == 10111011100
 binary(7); // == 111
 
-// ------------EJERCICIO 14------------
+// ------------EJERCICIO 16------------
 
-// Convertir cualquier número binario a entero
+// Convert any binary to integer
 
 function decimal(n){
-    //Nombrar el número binario
     let binary = 0;
-    //Agregar la potencia del número
     let potency=0;
     let numberInitial = n;
-    //Hacer el proceso mientra el número sea mayor o igual a 1
     while (numberInitial>=1) {
-    //Declarar una variable auxilar para guardar el residuo
         let aux = numberInitial%10;
-    //Ir multiplicando los número 1 a la potencia de 2 a la n y sumarlos
         binary += aux * Math.pow(2,potency);
-    //Aumentar el valor de n o la potencia
         potency++;
-    //Dividir el número entre 10 y tomar el entero
-        numberInitial= Math.trunc(numberInitial/10);
+        numberInitial = Math.trunc(numberInitial/10);
     }
-    console.log(binary);
+    return console.log(binary);
 }
+// Unit test
 decimal(101); // == 5
 decimal(1); // == 1
 decimal(10111011100); // == 1500
 decimal(111); // == 7
 
-// ------------EJERCICIO 15------------
+// ------------EJERCICIO 17------------
 
 // Complete the solution so that the function will break up camel casing, using a space between words.
 
@@ -586,32 +559,354 @@ function spacingInTheString(str){
     }
     console.log(string)
 }
+// Unit test
 spacingInTheString('camelCasing'); // == camel Casing
 spacingInTheString('camelCasingTest'); // == camel Casing Test
 spacingInTheString('feelFirstFew'); // == feel First Few
 
+// ------------EJERCICIO 18------------
 
-// ------------EJERCICIO 16------------
+// Remove the amount the small integers of a array give
+// if the integer is higher to amount the data from the array
+// return [], if the integer is 0 return the array
 
-function inverse(n) {
-    let count3 = 0;
-    let count5 = 0;
-    let multiply3 = 0;
-    let multiply5 = 0;
-        for (let i = 1; i < n; i++) {
-            if(i*5<n){
-                multiply5 += 5;
-                count5 += multiply5;
-
-            }
-            if(i*3<n){     
-                multiply3 += 3;
-                count3 += multiply3;
-            }
-            
-    }
-    console.log(count5+count3)
+function removeNSmallest( n, arr ) {
+	if(n==0) return console.log(arr);
+	if(n>arr.length) return console.log([]);
+	while(n>0 && n<=arr.length){
+     let numeroMenor = 1000;
+		for(let i=0; i<=arr.length; i++){
+			if(arr[i]<numeroMenor){
+                numeroMenor = arr[i];
+			}
+		}
+        const index = arr.indexOf(numeroMenor);
+        arr.splice(index,1);
+	    n--;
+	}
+	return console.log(arr);
 }
-inverse(10) // == 23
-inverse(20) // == 93
-inverse(23) // == 119
+// Unit test
+removeNSmallest(4,[1,2,3,4,5]); // == [5]
+removeNSmallest(5,[1,2,3]); // == []
+removeNSmallest(1,[1,2,3]); // == [2,3]
+removeNSmallest(0,[7,8,9]) // == [7,8,9]
+
+// ------------EJERCICIO 19------------
+
+// An isogram is a word that has no repeating letters, consecutive or non-consecutive.
+// implement a function that determines whether a string that contains only letters is an
+// isogram. Assume the empty string is an isogram. Ignore letter case.
+
+function isIsogram(str) {
+  str = str.toLowerCase().split("");
+  let stack = [];
+  let isIsogram = true;
+  for (let i = 0; i < str.length; i++) {
+    if (stack.indexOf(str[i])<0) {
+        stack.push(str[i]);
+    }else{
+        isIsogram = false;
+    }
+  }
+  return console.log(stack, isIsogram);
+}
+// Unit test
+isIsogram("Dermatoglyphics"); //== true
+isIsogram("aba"); //== false
+isIsogram("moOse"); // == false // -- ignore letter case
+
+// ------------EJERCICIO 20------------
+
+// Given a list of integers, determine whether the sum of its elements is odd or even.
+// Give your answer as a string matching "odd" or "even".
+// If the input array is empty consider it as: [0] (array with a zero).
+
+function oddOrEven(arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  if (sum % 2 == 0) {
+    return console.log("even");
+  } else {
+    return console.log("odd");
+  }
+}
+// Unit test
+oddOrEven([0]); // == 'even'
+oddOrEven([0, 1, 4]); // == 'odd'
+oddOrEven([0,-1,-5]); // == 'even'
+
+//  ------------EJERCICIO 21------------
+
+// Implement the function unique_in_order which takes as argument a sequence
+// and returns a list of items without any elements with the same value next
+// to each other and preserving the original order of elements.
+
+function uniqueInOrder(params) {
+  let arr = [];
+  if (typeof params == "string") {
+    arr = params.split("");
+  }else{
+      arr = params;
+  }
+  let stack = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (stack.indexOf(arr[i]) < 0) {
+      stack.push(arr[i]);
+    }
+  }
+  return console.log(stack);
+}
+// Unit test
+uniqueInOrder("AAAABBBCCDAABBB"); // == ['A', 'B', 'C', 'D']
+uniqueInOrder("ABBCcAD"); // == ['A', 'B', 'C', 'c', 'D']
+uniqueInOrder([1, 2, 2, 3, 3]); //   == [1,2,3]
+
+//  ------------EJERCICIO 22------------
+
+// Order the numbers the array from lowest to highest
+
+function order(arr) {
+    let aux = 0;
+    for (let i = 0; i < arr.length; i++) {
+       for (let j = 0; j < arr.length; j++) {
+            if(arr[j]>arr[j+1]){
+                aux = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1]=aux;
+            }
+       }
+    }
+    return console.log(arr)
+}
+order([5,4,3,2,1]) // == [1,2,3,4,5]
+
+//  ------------EJERCICIO 23------------
+
+// IPV4 to int32
+
+function ipToInt(ip) {
+    let arr = ip.split('.');
+    let cad = "";
+    for (let i = 0; i < arr.length; i++) {
+        let octet = "";
+        while (arr[i]>=1) {
+         octet = arr[i]%2 + octet;
+         arr[i] = Math.trunc(arr[i]/2);
+        }
+        if(octet.length<8){
+            while (octet.length<8) {
+                octet = '0'+octet;
+            }
+            cad+=octet;
+        }else{
+            cad += octet;
+        }
+    }
+    let decimal = 0;
+    for (let i = 0; i < cad.length; i++) {
+        decimal += cad[i] * Math.pow(2,cad.length-1-i);
+    }
+    return console.log(decimal)
+}
+ipToInt("128.32.10.1"); // == 2149583361
+
+//  ------------EJERCICIO 24------------
+
+// Let us consider this example (array written in general format):
+// ls = [0, 1, 3, 6, 10]
+// Its following parts:
+
+// ls = [0, 1, 3, 6, 10]
+// ls = [1, 3, 6, 10]
+// ls = [3, 6, 10]
+// ls = [6, 10]
+// ls = [10]
+// ls = []
+// The corresponding sums are (put together in a list): [20, 20, 19, 16, 10, 0]
+
+function parts_sum(arr) {
+  let sums = [];
+  let i = 0;
+  while (arr.length > 0) {
+    let valor = 0;
+    for (let j = 0; j < arr.length; j++) {
+      valor += arr[j];
+    }
+    sums[i] = valor;
+    i++;
+    arr.splice(0, 1);
+  }
+  if (arr.length == 0) {
+    sums.push(0);
+  }
+  console.log(sums);
+}
+// Unit test
+parts_sum([0, 1, 3, 6, 10]); // == [20, 20, 19, 16, 10, 0]
+parts_sum([1, 2, 3, 4, 5, 6]); // == [21, 20, 18, 15, 11, 6, 0]
+parts_sum([744125, 935, 407, 454, 430, 90, 144, 6710213, 889, 810, 2579358]); // ==  [10037855, 9293730, 9292795, 9292388, 9291934, 9291504, 9291414, 9291270, 2581057, 2580168, 2579358, 0]);
+
+// // //  ------------EJERCICIO 25------------ -> Faltan para números muy grandes
+
+// Given an array of integers of any length, return an array that has 1 added to the value represented by the array.
+
+// the array can't be empty
+// only non-negative, single digit integers are allowed
+// Return nil (or your language's equivalent) for invalid inputs.
+function upArray(arr) {
+    console.log(arr.length)
+  if (!arr.length) return console.log(null);
+  for (let j = 0; j < arr.length; j++) {
+    if (arr[j] > 10 || arr[j] < 0) {
+      return console.log(null);
+    }
+  }
+  let n = "";
+  for (let i = 0; i < arr.length; i++) {
+    n += arr[i] + "";
+  }
+  let numero = Number(n)+1;
+  numero = parseInt(numero,10)
+  console.log(numero)
+  let total = [];
+  console.log(numero.toString().length);
+  for (let k = 0; k < numero.toString().length; k++) {
+    total.push(parseInt(numero.toString()[k]));
+  }
+  console.log(total);
+}
+// Unit test
+upArray([2, 3, 9]);
+upArray([4, 3, 2, 5]);
+upArray([1, -9]);
+upArray([9,9,9]);
+upArray([]);
+upArray([
+  9, 2, 2, 3, 3, 7, 2, 0, 3, 6, 8, 5, 4, 7, 7, 5, 8, 0, 7, 5, 3, 2, 6, 7, 8, 4,
+  2, 4, 2, 6, 7, 8, 7, 4, 5, 2, 1,
+]);
+
+//  ------------EJERCICIO 26------------
+
+//Heron's formule, the formule is for calculate the area of a triangule with three sides.
+
+function heronFormule(a,b,c){
+    const s = (a+b+c)/2;
+    const area = Math.sqrt(s*(s-a)*(s-b)*(s-c));
+    console.log(area);
+}
+// Unit test
+heronFormule(3,4,5) //== 6
+heronFormule(12,12,12) // == 62,35
+heronFormule(6,8,12) // == 21,33
+heronFormule(2,3,4) // == 2.90
+
+//  ------------EJERCICIO 27------------
+
+// Calculate area of given triangle. Create a function t_area that will take a string which
+// will represent triangle, find area of the triangle, one space will be equal to one length unit.
+// The smallest triangle will have one length unit.
+
+function atArea(str){
+    let arr = str.split("\n");
+    let heigh = arr.length-3;
+    let base= arr[arr.length-2];
+    let dots = base.split(' ');
+    return console.log('Area: ',(heigh*(dots.length-1))/2)
+}
+// Unit test
+atArea('\n.\n. .\n'); // == 0.5
+atArea('\n.\n. .\n. . .\n'); // == 2
+atArea('\n.\n. .\n. . .\n. . . .\n. . . . .\n. . . . . .\n. . . . . . .\n. . . . . . . .\n. . . . . . . . .\n') // == 32
+atArea('\n.\n. .\n. . .\n. . . .\n. . . . .\n') // == 8
+
+//  ------------EJERCICIO 28------------
+
+// Complete the solution so that it reverses all of the words within the string passed in.
+
+function reverseWord(str) {
+  let arr = str.split(" ");
+  let string = "";
+  for (let i = arr.length - 1; i >= 0; i--) {
+    string += arr[i] + " ";
+  }
+  console.log(string.trim());
+}
+// Unit test
+reverseWord("hello world!"); // == world! hello
+reverseWord("yoda doesn't speak like this"); // == this like speak doesn't yoda
+reverseWord("foobar") //  == foobar
+reverseWord("editor kata") //  == editor kata
+
+//  ------------EJERCICIO 29------------
+
+// I have a cat and a dog.
+// I got them at the same time as kitten/puppy. That was humanYears years ago.
+// Return their respective ages now as [humanYears,catYears,dogYears]
+
+// Cat Years
+// 15 cat years for first year
+// +9 cat years for second year
+// +4 cat years for each year after that
+
+// Dog Years
+// 15 dog years for first year
+// +9 dog years for second year
+// +5 dog years for each year after that
+
+function years(humanYears) {
+  let arr = [humanYears];
+  let gatos = 0,
+    perros = 0;
+  for (let i = 0; i <= humanYears; i++) {
+    if (i == 1) {
+      gatos += 15;
+      perros += 15;
+    } else if (i == 2) {
+      gatos += 9;
+      perros += 9;
+    } else if (i > 1) {
+      gatos += 4;
+      perros += 5;
+    }
+  }
+  arr.push(gatos, perros);
+  console.log(arr);
+}
+// Unit test
+years(1); // == [1,15,15];
+years(10); // == [10,56,64];
+years(2); // == [2,24,24];
+years(19); // == [19,80,94];
+years(20); // == [20,96,114];
+years(6); // == [6,40,44];
+
+//  ------------EJERCICIO 30------------
+
+// Return the number (count) of vowels in the given string.
+
+// We will consider a, e, i, o, u as vowels for this Kata (but not y).
+
+// The input string will only consist of lower case letters and/or spaces.
+
+function vowel(str) {
+  let vowels = ["a", "e", "i", "o", "u"];
+  let count = 0;
+  let string = str.toLowerCase().split("");
+  for (let i = 0; i < string.length; i++) {
+    for (let j = 0; j < vowels.length; j++) {
+      if (string[i] === vowels[j]) {
+        count++;
+      }
+    }
+  }
+  return console.log(count);
+}
+// // Unit test
+vowel("abracadabra"); // == 5;
+vowel("pear tree"); // == 4;
+vowel("o a kak ushakov lil vo kashu kakao"); // == 13;
+vowel("my pyx")// == 0;
